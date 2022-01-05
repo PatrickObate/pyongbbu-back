@@ -3,8 +3,6 @@ const Product = require("../models/product");
 const Cart = require("../models/cart");
 const Order = require("../models/order");
 const uniqueid = require("uniqueid");
-const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Types;
 
 exports.userCart = async (req, res) => {
   // console.log(req.body);
@@ -174,7 +172,7 @@ exports.createCashOrder = async (req, res) => {
   let newOrder = await new Order({
     products: userCart.products,
     paymentIntent: {
-      id: new ObjectId(),
+      id: uniqueid(),
       amount: userCart.cartTotal * 100,
       currency: "php",
       status: "Virtual Wallet or Bank",
