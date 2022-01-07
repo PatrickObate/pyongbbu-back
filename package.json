@@ -20,7 +20,6 @@
     "firebase-admin": "^10.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
-    "mongoose-delete": "^0.5.4",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.14",
     "paymongo": "^1.1.1",
