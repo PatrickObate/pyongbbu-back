@@ -74,11 +74,14 @@ exports.saveAddress = async (req, res) => {
   console.log(req);
   const userAddress = await User.updateOne(
     { email: req.user.email },
-    { address: req.body.address, contactName: req.body.contactName }
-    // { contactNumber: req.body.contactNumber },
-    // { city: req.body.city },
-    // { state: req.body.state },
-    // { postalCode: req.body.postalCode }
+    {
+      address: req.body.address,
+      contactName: req.body.contactName,
+      contactNumber: req.body.contactNumber,
+      city: req.body.city,
+      state: req.body.state,
+      postalCode: req.body.postalCode,
+    }
   ).exec();
 
   res.json({ ok: true });
@@ -121,7 +124,7 @@ exports.orders = async (req, res) => {
 
   let userOrders = await Order.find({ orderedBy: user._id })
     .populate("products.product")
-    .populate("orderedBy", "name email address")
+    .populate("orderedBy", "name email address contactName contactNumber city state postalCode")
     .exec();
 
   res.json(userOrders);
